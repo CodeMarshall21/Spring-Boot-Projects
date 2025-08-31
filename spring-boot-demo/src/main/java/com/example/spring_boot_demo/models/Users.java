@@ -6,6 +6,7 @@ public class Users {
     private String emailId;
 
     public Users(Long id, String name, String emailId){
+        super();
         this.id = id;
         this.name = name;
         this.emailId = emailId;
