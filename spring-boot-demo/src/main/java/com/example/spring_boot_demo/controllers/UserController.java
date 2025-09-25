@@ -18,7 +18,7 @@ public class UserController {
 //    public String getUsers(){
 //        return "Hello Keshav";
 //    }
-    @Autowired
+    @Autowired          // So that Spring Boot automatically create and instantiate object inside functions of this class
     private UserRepository userRepository;
 
     @GetMapping
