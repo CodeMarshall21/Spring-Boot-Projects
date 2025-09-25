@@ -3,9 +3,7 @@ package com.example.spring_boot_demo.controllers;
 import com.example.spring_boot_demo.entity.UserEntity;
 import com.example.spring_boot_demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.spring_boot_demo.models.Users;
 
@@ -31,6 +29,14 @@ public class UserController {
 //                new Users(3L, "Peter", "peter@gmail.com")
 //        );
         return userRepository.findAll();
+    }
+
+    @PostMapping
+    public UserEntity createUser(@RequestBody UserEntity user){
+
+//        System.out.println("POST API Called !");
+//        System.out.println("User Name: "+user.getName()+", User Email: "+user.getEmail());
+        return userRepository.save(user);
     }
 }
 
