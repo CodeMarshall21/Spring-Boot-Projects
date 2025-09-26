@@ -9,6 +9,7 @@ import com.example.spring_boot_demo.models.Users;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -37,6 +38,11 @@ public class UserController {
 //        System.out.println("POST API Called !");
 //        System.out.println("User Name: "+user.getName()+", User Email: "+user.getEmail());
         return userRepository.save(user);
+    }
+
+    @GetMapping("/{id}")
+    public Optional<UserEntity> getUserById(@PathVariable Long id){
+        return userRepository.findById(id);
     }
 }
 
