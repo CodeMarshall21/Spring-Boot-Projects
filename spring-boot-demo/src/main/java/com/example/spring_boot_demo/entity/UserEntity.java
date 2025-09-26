@@ -6,8 +6,8 @@ import jakarta.persistence.*;
 @Table(name = "users")  // Create a table name "users"
 public class UserEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id     // Denotes "Primary Key" and this is a MUST-HAVE
+    @GeneratedValue(strategy = GenerationType.IDENTITY)     // Auto-Increment value
     private Long id;
     private String name;
     private String email;
