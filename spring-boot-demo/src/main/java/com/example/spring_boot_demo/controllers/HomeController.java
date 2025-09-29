@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HomeController {
 
     @GetMapping("/home")
-    public String getHome(){
+    public String getHomePage(){
         return "✨ Server is up and running! Welcome ✨";
     }
 }
