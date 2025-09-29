@@ -15,7 +15,8 @@ public class SecurityConfig {
 
         httpSecurity.authorizeHttpRequests(authz -> authz.requestMatchers("/api/users/**").authenticated()
                 .requestMatchers("/","/swagger-ui/**").permitAll()
-        );
+        )
+                .formLogin(form -> form.permitAll());
 
         return httpSecurity.build();
     }
