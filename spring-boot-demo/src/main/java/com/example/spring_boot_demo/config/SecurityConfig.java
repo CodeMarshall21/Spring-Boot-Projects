@@ -14,7 +14,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
 
         httpSecurity.authorizeHttpRequests(authz -> authz.requestMatchers("api/users/**").authenticated()
-                .requestMatchers("/home").permitAll()
+                .requestMatchers("/").permitAll()
         );
 
         return httpSecurity.build();
