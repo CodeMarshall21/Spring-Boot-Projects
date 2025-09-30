@@ -5,6 +5,7 @@ import com.example.spring_boot_demo.exceptions.ResourceNotFoundException;
 import com.example.spring_boot_demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.spring_boot_demo.models.Users;
@@ -24,6 +25,9 @@ public class UserController {
     @Autowired          // So that Spring Boot automatically create and instantiate object inside functions of this class
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @GetMapping
     public List<UserEntity> getUsers(){
 //        return Arrays.asList(
@@ -39,6 +43,8 @@ public class UserController {
 
 //        System.out.println("POST API Called !");
 //        System.out.println("User Name: "+user.getName()+", User Email: "+user.getEmail());
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
