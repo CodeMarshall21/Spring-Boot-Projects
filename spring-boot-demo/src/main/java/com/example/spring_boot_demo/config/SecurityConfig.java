@@ -20,9 +20,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
 
         httpSecurity.authorizeHttpRequests(authz -> authz.requestMatchers("/api/users/**").authenticated()
-                .requestMatchers("/","/swagger-ui/**").permitAll()
+                        .requestMatchers("/").permitAll()
+                        .anyRequest().permitAll()
         )
-                .formLogin(form -> form.permitAll())
+                .formLogin(form -> form.permitAll().defaultSuccessUrl("/dashboard"))
         ;
 
         return httpSecurity.build();
