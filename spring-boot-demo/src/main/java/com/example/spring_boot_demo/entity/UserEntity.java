@@ -39,6 +39,9 @@ public class UserEntity {
 
     public String getUsername(){ return username; }
 
+    public String getPassword(){ return password; }
+
+
     public void setId(Long id){
         this.id = id;
     }
@@ -50,6 +53,8 @@ public class UserEntity {
     public void setEmail(String email){
         this.email = email;
     }
+
+    public void setUsername(String password) { this.username = username; }
 
     public void setPassword(String password) { this.password = password; }
 
