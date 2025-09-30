@@ -12,4 +12,9 @@ public class HomeController {
     public String getHomePage(){
         return "✨ Server is up and running! Welcome ✨";
     }
+
+    @GetMapping("/dashboard")
+    public String getDashboardPage(){
+        return "THIS IS A DASHBOARD PAGE";
+    }
 }
