@@ -54,7 +54,7 @@ public class UserEntity {
         this.email = email;
     }
 
-    public void setUsername(String password) { this.username = username; }
+    public void setUsername(String username) { this.username = username; }
 
     public void setPassword(String password) { this.password = password; }
 
