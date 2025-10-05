@@ -1,8 +1,10 @@
 package com.example.spring_boot_demo.config;
 
+import com.example.spring_boot_demo.services.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -35,18 +37,29 @@ public class SecurityConfig {
     }
 
     @Bean
-    public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder){
-        UserDetails user = User.withUsername("Bro")
-                .password(passwordEncoder.encode("Bro@123"))
-                .roles("USER")
-                .build();
+    public UserDetailsService userDetailsService(){
+//        UserDetails user = User.withUsername("Bro")
+//                .password(passwordEncoder.encode("Bro@123"))
+//                .roles("USER")
+//                .build();
+//
+//        UserDetails admin = User.withUsername("AdminGuy")
+//                .password(passwordEncoder.encode("AdminGuy@123"))
+//                .roles("ADMIN")
+//                .build();
+//
+//        return new InMemoryUserDetailsManager(user, admin);
 
-        UserDetails admin = User.withUsername("AdminGuy")
-                .password(passwordEncoder.encode("AdminGuy@123"))
-                .roles("ADMIN")
-                .build();
+        return new CustomUserDetailsService();
+    }
 
-        return new InMemoryUserDetailsManager(user, admin);
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider(){
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService());
+        authProvider.setPasswordEncoder(passwordEncoder());
+
+        return authProvider;
     }
 
     @Bean
